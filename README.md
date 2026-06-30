@@ -18,25 +18,25 @@ REVEAL is a next-generation Security Operations Center (SOC) threat command cent
 
 ```mermaid
 graph TD
-    subgraph Target Endpoint (Kali Linux VM)
-        Wazuh[rsyslog / auth.log] -->|Tails auth.log| Fwd[Log Forwarder Script]
-        Host[Firewall / Processes] <---|Executes SSH Commands| SSHd[SSH Daemon]
+    subgraph "Target Endpoint (Kali Linux VM)"
+        Wazuh["rsyslog / auth.log"] -->|Tails auth.log| Fwd["Log Forwarder Script"]
+        Host["Firewall / Processes"] <---|Executes SSH Commands| SSHd["SSH Daemon"]
     end
 
-    subgraph Host Machine (Mac SIEM/SOAR Node)
-        Fwd -->|HTTP POST JSON| API[/api/alerts Webhook]
-        API --> Logic[SOAR Engine & Risk Engine]
+    subgraph "Host Machine (Mac SIEM/SOAR Node)"
+        Fwd -->|HTTP POST JSON| API["/api/alerts Webhook"]
+        API --> Logic["SOAR Engine & Risk Engine"]
         
-        Logic -->|Calculates Risk| UEBA[UEBA Risk Cache]
-        Logic -->|Requests Analysis| AI[Gemini API Agent]
-        Logic -->|Spawns Playbook| Playbook[Playbook Manager]
+        Logic -->|Calculates Risk| UEBA["UEBA Risk Cache"]
+        Logic -->|Requests Analysis| AI["Gemini API Agent"]
+        Logic -->|Spawns Playbook| Playbook["Playbook Manager"]
         
         Playbook -->|SSH Execution| SSHd
         
-        Logic -->|Pushes State Updates| WS[WebSocket Server]
+        Logic -->|Pushes State Updates| WS["WebSocket Server"]
         
-        subgraph Web Dashboard (React SPA)
-            WS -->|Real-time streams| UI[Dashboard UI]
+        subgraph "Web Dashboard (React SPA)"
+            WS -->|Real-time streams| UI["Dashboard UI"]
             UI -->|Trigger Approval / Run Playbook| API
         end
     end
