@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirvaan Katyal - Resume</title>
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #334155;
+      --accent-color: #0284c7;
+      --sidebar-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-light: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4;
+      margin: 0; /* Let print margins handle spacing to prevent page headers/footers */
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      line-height: 1.4;
+      background-color: #ffffff;
+      padding: 0;
+      -webkit-print-color-adjust: exact; /* Force color printing */
+      print-color-adjust: exact;
+    }
+
+    .resume-container {
+      width: 100%;
+      max-width: 820px;
+      min-height: 1080px; /* Fits exactly on A4 page height */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      background-color: #ffffff;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .profile-img-container {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 5px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--accent-color);
+      background-color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sidebar-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-color);
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-list li {
+      word-break: break-all;
+    }
+
+    .contact-list a {
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .skills-group {
+      margin-bottom: 10px;
+    }
+
+    .skills-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 4px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .skills-list li {
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+
+    .certs-list {
+      list-style: none;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--secondary-color);
+    }
+
+    .certs-list li {
+      border-left: 2px solid var(--accent-color);
+      padding-left: 6px;
+      line-height: 1.3;
+    }
+
+    /* Right Main Content */
+    .main-content {
+      padding: 20px 24px 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header-name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      line-height: 1.1;
+    }
+
+    .header-title {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .header-location {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 1px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-color);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 2px;
+      margin-bottom: 8px;
+    }
+
+    .summary-text {
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-align: justify;
+      line-height: 1.4;
+    }
+
+    .project-item {
+      margin-bottom: 12px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .project-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .project-tech {
+      font-size: 0.7rem;
+      font-family: monospace;
+      color: var(--accent-color);
+      background-color: #f0f9ff;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    .project-bullets {
+      list-style-type: square;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      margin-left: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .experience-item {
+      margin-bottom: 12px;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .exp-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .exp-company {
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .exp-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    .exp-desc {
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      margin-top: 2px;
+      list-style-type: circle;
+      margin-left: 14px;
+    }
+
+    .education-item {
+      margin-bottom: 8px;
+    }
+
+    /* Print styling optimizations */
+    @media print {
+      body {
+        padding: 0;
+        background-color: #ffffff;
+      }
+      .resume-container {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+        min-height: auto;
+      }
+      .sidebar {
+        background-color: #f8fafc !important;
+        border-right: 1px solid #cbd5e1;
+      }
+      .project-tech {
+        background-color: #f0f9ff !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      
+
+      <!-- Contact Section -->
+      <div>
+        <h3 class="sidebar-section-title">Contact</h3>
+        <ul class="contact-list">
+          <li>Phone: +91-9599727545</li>
+          <li>Email: <a href="mailto:nirvaankatyal8105@gmail.com">nirvaankatyal8105@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/nirvaan-katyal-a8571928a" target="_blank">linkedin.com/in/nirvaan-katyal</a></li>
+          <li>GitHub: <a href="https://github.com/nirvaan8" target="_blank">github.com/nirvaan8</a></li>
+          <li>Portfolio: <a href="#">nirvaankatyal.com</a></li>
+        </ul>
+      </div>
+
+      <!-- Cyberfocused Skills Section -->
+      <div>
+        <h3 class="sidebar-section-title">Skills</h3>
+        
+        <div class="skills-group">
+          <div class="skills-group-title">Cybersecurity</div>
+          <ul class="skills-list">
+            <li>Threat Detection</li>
+            <li>Incident Response</li>
+            <li>SIEM & SOAR</li>
+            <li>Threat Intel (OSINT)</li>
+          </ul>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Frameworks & Networks</div>
+          <ul class="skills-list">
+            <li>NIST CSF</li>
+            <li>MITRE ATT&CK</li>
+            <li>TCP/IP, DNS, HTTP/S</li>
+            <li>Python, Flask</li>
+            <li>PowerShell, Bash, SQL</li>
+          </ul>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Security controls</div>
+          <ul class="skills-list">
+            <li>JWT, TOTP 2FA</li>
+            <li>RBAC, IP Blocking</li>
+            <li>GDPR, HIPAA Audits</li>
+            <li>Iptables, AWS Security</li>
+          </ul>
+        </div>
+
+        <div class="skills-group">
+          <div class="skills-group-title">Infrastructure / DevOps</div>
+          <ul class="skills-list">
+            <li>Splunk</li>
+            <li>Wazuh</li>
+            <li>Docker</li>
+            <li>Jenkins</li>
+            <li>VirtualBox</li>
+            <li>Git</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Certifications (Updated) -->
+      <div>
+        <h3 class="sidebar-section-title">Certifications</h3>
+        <ul class="certs-list">
+          <li>CompTIA Security+ (In Progress)</li>
+          <li>Google Cybersecurity Certificate</li>
+          <li>Fortinet: Getting Started in Cybersecurity 3.0</li>
+          <li>Gurucul: Gurucul REVEAL Overview</li>
+          <li>Tata Group: Cybersecurity Analyst Simulation</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- Name Header -->
+      <section style="margin-bottom: 4px;">
+        <h1 class="header-name">Nirvaan Katyal</h1>
+        <div class="header-title">B.Tech Cybersecurity Undergraduate | Security Analyst</div>
+        <div class="header-location">Delhi, India</div>
+      </section>
+
+      <!-- Professional Summary -->
+      <section>
+        <h2 class="section-title">Summary</h2>
+        <p class="summary-text">
+          B.Tech Cybersecurity student at NIIT University with hands-on experience designing automated SIEM detection rules and SOAR containment playbooks. Specialized in real-time log ingestion, UEBA risk scoring engines, and secure automation scripting (Python, PowerShell, Bash). Developed virtualized SOC environments using Wazuh and Splunk to parse network telemetry and trigger SSH-based incident responses. Targeting Security Analyst and SOC Engineering internships.
+        </p>
+      </section>
+
+      <!-- Cybersecurity Projects (Updated) -->
+      <section>
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Project 1: Reveal (Our SOAR Platform) -->
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Reveal - Autonomous AI-Driven SIEM & SOAR Platform</span>
+            <span class="project-tech">React, WebSockets, Wazuh, SSH, Gemini API</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Ingests real-time endpoint security alerts from Wazuh manager JSON log files using a custom tailing client forwarder.</li>
+            <li>Developed a behavior scoring engine (UEBA) analyzing alert severity levels (0-15) to calculate host/user risk indicators.</li>
+            <li>Integrated Gemini API to autonomously write incident summary triage sheets and mitigation playbooks in real-time.</li>
+            <li>Created SOAR containment flows executing secure SSH shell containment actions (firewall block, process kill) on Kali.</li>
+          </ul>
+        </div>
+
+        <!-- Project 2: Live Windows SIEM Dashboard -->
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Live Windows SIEM Dashboard</span>
+            <span class="project-tech">Python, Flask, PowerShell, Webhook</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Engineered threat detection scripts analyzing 15+ Windows Event IDs (privilege escalations, brute forces, account lockouts).</li>
+            <li>Created background PowerShell modules parsing Event logs, translating to JSON, and feeding HTTP Flask APIs.</li>
+            <li>Designed interactive dashboard displaying analytics, attack vectors, and geolocated threat maps.</li>
+          </ul>
+        </div>
+
+        <!-- Project 3: Mini SOC Lab (Updated) -->
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-name">Mini SOC Lab - SIEM & Incident Response Lab</span>
+            <span class="project-tech">Splunk, Wazuh, Kali Linux, Ubuntu, VirtualBox</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Established a virtualized SOC laboratory environment integrating Splunk and Wazuh manager engines to capture host telemetry.</li>
+            <li>Simulated network attacks (brute force login, Nmap port scanning) targeting an Ubuntu endpoint from a Kali attacker VM.</li>
+            <li>Configured Splunk dashboards and Wazuh alerting rules to process raw event logs and streamline threat investigation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Experience Section (Compact) -->
+      <section>
+        <h2 class="section-title">Experience</h2>
+
+
+
+        <div class="experience-item">
+          <div class="experience-header">
+            <span class="exp-title">Coordinator</span>
+            <span class="exp-date">Dec 2024 - Dec 2025</span>
+          </div>
+          <div class="exp-company">NU Agraga - Management Society</div>
+          <ul class="exp-desc">
+            <li>Organized team resources and logistics for university technical festivals and management events.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section>
+        <h2 class="section-title">Education</h2>
+        
+        <div class="education-item">
+          <div class="experience-header">
+            <span class="exp-title">NIIT University</span>
+            <span class="exp-date">2023 - 2027</span>
+          </div>
+          <div class="exp-company">B.Tech in Cybersecurity</div>
+        </div>
+
+        <div class="education-item">
+          <div class="experience-header">
+            <span class="exp-title">Mira Model School</span>
+            <span class="exp-date">Graduated 2023</span>
+          </div>
+          <div class="exp-company">Senior Secondary Education</div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

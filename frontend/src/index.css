@@ -1,0 +1,238 @@
+/* index.css */
+/* Premium Cybersecurity Styling System - Deep Slate & Neon Accents */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+  --bg-primary: #070a13;
+  --bg-secondary: rgba(13, 20, 38, 0.6);
+  --bg-tertiary: #161f38;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  
+  /* Cyber Colors */
+  --cyber-green: #10b981;
+  --cyber-green-glow: rgba(16, 185, 129, 0.25);
+  
+  --cyber-amber: #f59e0b;
+  --cyber-amber-glow: rgba(245, 158, 11, 0.25);
+  
+  --cyber-red: #f43f5e;
+  --cyber-red-glow: rgba(244, 63, 94, 0.3);
+  
+  --cyber-cyan: #06b6d4;
+  --cyber-cyan-glow: rgba(6, 182, 212, 0.25);
+  
+  --cyber-magenta: #d946ef;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-cyber: 'Rajdhani', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(217, 70, 239, 0.04) 0px, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.005) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+  min-height: 100vh;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-cyan);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Glowing Neon Elements */
+.glow-border-green { border-color: var(--cyber-green); box-shadow: 0 0 10px var(--cyber-green-glow); }
+.glow-border-amber { border-color: var(--cyber-amber); box-shadow: 0 0 10px var(--cyber-amber-glow); }
+.glow-border-red { border-color: var(--cyber-red); box-shadow: 0 0 10px var(--cyber-red-glow); }
+.glow-border-cyan { border-color: var(--cyber-cyan); box-shadow: 0 0 10px var(--cyber-cyan-glow); }
+
+.text-cyber-green { color: var(--cyber-green); text-shadow: 0 0 8px var(--cyber-green-glow); }
+.text-cyber-amber { color: var(--cyber-amber); text-shadow: 0 0 8px var(--cyber-amber-glow); }
+.text-cyber-red { color: var(--cyber-red); text-shadow: 0 0 8px var(--cyber-red-glow); }
+.text-cyber-cyan { color: var(--cyber-cyan); text-shadow: 0 0 8px var(--cyber-cyan-glow); }
+
+/* Pulses */
+@keyframes pulse-red-anim {
+  0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+.pulse-red {
+  animation: pulse-red-anim 2s infinite;
+}
+
+@keyframes pulse-cyan-anim {
+  0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(6, 182, 212, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+.pulse-cyan {
+  animation: pulse-cyan-anim 2.5s infinite;
+}
+
+/* Layout Utilities */
+.cyber-header {
+  font-family: var(--font-cyber);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.terminal-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Threat Score Dial */
+.threat-dial-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.threat-dial-svg {
+  transform: rotate(-90deg);
+}
+
+/* Playbook Node Connections */
+.playbook-connection-line {
+  width: 2px;
+  flex-grow: 1;
+  background: var(--bg-tertiary);
+  margin: 4px 0;
+  position: relative;
+}
+
+.playbook-connection-line.active {
+  background: linear-gradient(to bottom, var(--cyber-cyan), var(--bg-tertiary));
+}
+
+.playbook-connection-line.completed {
+  background: var(--cyber-green);
+}
+
+/* Custom interactive inputs */
+.cyber-button {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-cyber);
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cyber-button:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: var(--cyber-cyan);
+  color: var(--cyber-cyan);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+}
+
+.cyber-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  box-shadow: none;
+  background: var(--bg-primary);
+}
+
+.cyber-button.danger {
+  border-color: rgba(244, 63, 94, 0.4);
+}
+
+.cyber-button.danger:hover {
+  background: rgba(244, 63, 94, 0.1);
+  border-color: var(--cyber-red);
+  color: var(--cyber-red);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.15);
+}
+
+/* Badges */
+.cyber-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-cyber);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.cyber-badge.green {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--cyber-green);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.cyber-badge.amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--cyber-amber);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.cyber-badge.red {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--cyber-red);
+  border-color: rgba(244, 63, 94, 0.2);
+}
+
+.cyber-badge.cyan {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--cyber-cyan);
+  border-color: rgba(6, 182, 212, 0.2);
+}
