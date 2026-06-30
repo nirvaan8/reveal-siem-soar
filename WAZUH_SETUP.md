@@ -55,7 +55,7 @@ To allow your SOAR dashboard to execute firewall bans (`iptables`) or process te
 Update your dashboard's backend environment file to connect to your Kali VM.
 
 1.  Open the backend `.env` file on your Host Mac:
-    [backend/.env](file:///Users/nirvaankatyal/soc-soar-platform/backend/.env)
+    [backend/.env](file:///Users/nirvaankatyal/project/soc-soar-platform/backend/.env)
 2.  Enter your SSH credentials:
     ```env
     KALI_SSH_HOST=192.168.x.x  # Enter your Kali VM IP
@@ -72,7 +72,7 @@ Update your dashboard's backend environment file to connect to your Kali VM.
 
 The forwarder tails the Wazuh manager's raw JSON alert logs and feeds them into the SIEM dashboard.
 
-1.  Copy the [forwarder.py](file:///Users/nirvaankatyal/soc-soar-platform/kali-agent/forwarder.py) script from your Mac workspace onto your Kali Linux VM.
+1.  Copy the [forwarder.py](file:///Users/nirvaankatyal/project/soc-soar-platform/kali-agent/forwarder.py) script from your Mac workspace onto your Kali Linux VM.
 2.  On the Kali VM, install python requirements (the script uses the standard `requests` library):
     ```bash
     pip3 install requests

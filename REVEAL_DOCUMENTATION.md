@@ -127,9 +127,9 @@ For the SOAR dashboard to run remediations on your Kali VM, you must enable SSH 
 On your **Host Mac**, configure the project parameters:
 
 1.  Navigate to the backend folder:
-    `/Users/nirvaankatyal/soc-soar-platform/backend`
+    `/Users/nirvaankatyal/project/soc-soar-platform/backend`
 2.  Open the `.env` file:
-    [backend/.env](file:///Users/nirvaankatyal/soc-soar-platform/backend/.env)
+    [backend/.env](file:///Users/nirvaankatyal/project/soc-soar-platform/backend/.env)
 3.  Configure your credentials:
     ```env
     PORT=5001
@@ -145,13 +145,13 @@ On your **Host Mac**, configure the project parameters:
 ### Step 3: Run the Platform locally on Mac
 1.  **Terminal 1 (Backend)**:
     ```bash
-    cd /Users/nirvaankatyal/soc-soar-platform/backend
+    cd /Users/nirvaankatyal/project/soc-soar-platform/backend
     npm start
     ```
     *Log output should confirm: `🚀 Gurucul SIEM/SOAR Backend active on port 5001`*
 2.  **Terminal 2 (Frontend Dashboard)**:
     ```bash
-    cd /Users/nirvaankatyal/soc-soar-platform/frontend
+    cd /Users/nirvaankatyal/project/soc-soar-platform/frontend
     npm run dev
     ```
     *Open the local link in your browser (`http://localhost:5173`).*
